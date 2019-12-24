@@ -12,10 +12,6 @@ public class GenerateSyntheticData implements Iterable<DataElement> {
     private final Random random = new Random(0);
     long newPersIdNumber = 1_000_000_000;
 
-    public SchemaBuddy getSchemaBuddy() {
-        return schemaBuddy;
-    }
-
     private final SchemaBuddy schemaBuddy;
 
     public GenerateSyntheticData(Schema schema) {
@@ -34,12 +30,17 @@ public class GenerateSyntheticData implements Iterable<DataElement> {
 
     DataElement parse(DataElement dataElement, SchemaBuddy schemaBuddy) {
         for (SchemaBuddy childSchema : schemaBuddy.getChildren()) {
+            if (childSchema.isArrayType()) {
+                parse(dataElement, childSchema);
+                continue;
+            }
             DataElement childElement = new DataElement(childSchema.getName());
+            dataElement.addChild(childElement);
             if (childSchema.isSimpleType()) {
                 childElement.setValue(getData(childSchema));
+            } else {
+                parse(childElement, childSchema);
             }
-            dataElement.addChild(childElement);
-            parse(childElement, childSchema);
         }
         return dataElement;
     }
