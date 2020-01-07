@@ -22,8 +22,8 @@ class GenerateSyntheticDataTest {
 
         DataElement element = generateSyntheticData.parse();
 
-        System.out.println(element.toString(false));
-        System.out.println(element.findChildByName("personidentifikator").toString());
+        System.out.println(element.toString(true));
+//        System.out.println(element.findChildByName("personidentifikator").toString());
     }
 
     @Test

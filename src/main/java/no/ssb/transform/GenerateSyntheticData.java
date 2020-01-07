@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.Random;
 
 public class GenerateSyntheticData implements Iterable<DataElement> {
+    private static final int CHILD_COUNT = 2;
     private Integer count = 0;
     private final Random random = new Random(0);
     long newPersIdNumber = 1_000_000_000;
@@ -25,21 +26,25 @@ public class GenerateSyntheticData implements Iterable<DataElement> {
 
     DataElement parse() {
         DataElement root = new DataElement(schemaBuddy.getName());
-        return parse(root, schemaBuddy);
+        return parse(root, schemaBuddy, 0);
     }
 
-    DataElement parse(DataElement dataElement, SchemaBuddy schemaBuddy) {
+    DataElement parse(DataElement dataElement, SchemaBuddy schemaBuddy, int arrayElementCount) {
         for (SchemaBuddy childSchema : schemaBuddy.getChildren()) {
             if (childSchema.isArrayType()) {
-                parse(dataElement, childSchema);
+                for (int i = 0; i < CHILD_COUNT; i++) {
+                    parse(dataElement, childSchema, i);
+                    arrayElementCount++;
+                }
                 continue;
             }
+
             DataElement childElement = new DataElement(childSchema.getName());
             dataElement.addChild(childElement);
             if (childSchema.isSimpleType()) {
-                childElement.setValue(getData(childSchema));
+                childElement.setValue(getData(childSchema, arrayElementCount));
             } else {
-                parse(childElement, childSchema);
+                parse(childElement, childSchema, arrayElementCount);
             }
         }
         return dataElement;
@@ -52,7 +57,7 @@ public class GenerateSyntheticData implements Iterable<DataElement> {
         return null;
     }
 
-    String getData(SchemaBuddy schema) {
+    String getData(SchemaBuddy schema, int arrayElementCount) {
         String data = insertData(schema);
         if (data != null) {
             return data;
@@ -60,7 +65,7 @@ public class GenerateSyntheticData implements Iterable<DataElement> {
 
         assert schema.isSimpleType();
         if (schema.getType() == Schema.Type.STRING) {
-            return schema.getName() + "_" + count.toString();
+            return schema.getName() + "_" + count + "_" + arrayElementCount;
         }
         return Integer.toString(random.nextInt(100_000));
     }

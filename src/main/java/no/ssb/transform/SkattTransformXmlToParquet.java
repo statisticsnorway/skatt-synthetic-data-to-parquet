@@ -28,7 +28,6 @@ public class SkattTransformXmlToParquet {
         int cnt = 0;
         GenerateSyntheticData generateSyntheticData = new GenerateSyntheticData(sourceSchema.getRootSchema());
         for (DataElement dataElement : generateSyntheticData) {
-            System.out.println(dataElement.toString(true));
             GenericRecord record = SchemaAwareElement.toRecord(dataElement, schemaBuddy);
             list.add(record);
             cnt++;
@@ -40,7 +39,7 @@ public class SkattTransformXmlToParquet {
 
         deleteOldFiles();
 
-        parquetFileCreator.save(sourceSchema.getRootSchema(), list, "skatt-v0.29.parquet");
+        parquetFileCreator.save(sourceSchema.getRootSchema(), list, "skatt-2-levels-v0.29.parquet");
         System.out.printf("Took %dms to parse and create parquet file %d items", System.currentTimeMillis() - startTime, cnt);
     }
 
