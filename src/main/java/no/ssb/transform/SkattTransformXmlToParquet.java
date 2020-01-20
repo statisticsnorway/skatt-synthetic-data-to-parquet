@@ -9,47 +9,49 @@ import no.ssb.lds.data.client.LocalBackend;
 import no.ssb.lds.data.client.ParquetProvider;
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
-import org.apache.commons.io.FileUtils;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SkattTransformXmlToParquet {
 
+    private static final int COUNT_TO_GENERATE = 50_000 * 100;
+    private static final int BATCH_SIZE = 50_000;
+
     // A simple command line app to generate a parquet from random data
     public static void main(String[] args) {
-        long startTime = System.currentTimeMillis();
 
         SkattSchema sourceSchema = new SkattSchema();
 
         SchemaBuddy schemaBuddy = SchemaBuddy.parse(sourceSchema.getRootSchema());
-        List<GenericRecord> list = new ArrayList<>(10000);
-        int cnt = 0;
-        GenerateSyntheticData generateSyntheticData = new GenerateSyntheticData(sourceSchema.getRootSchema());
+        createFile(sourceSchema, schemaBuddy);
+    }
+
+    private static void createFile(SkattSchema sourceSchema, SchemaBuddy schemaBuddy) {
+        long startTime = System.currentTimeMillis();
+        int fileNum = 0;
+        List<GenericRecord> list = new ArrayList<>(COUNT_TO_GENERATE);
+        long totalTime = 0;
+        GenerateSyntheticData generateSyntheticData = new GenerateSyntheticData(sourceSchema.getRootSchema(), COUNT_TO_GENERATE);
         for (DataElement dataElement : generateSyntheticData) {
             GenericRecord record = SchemaAwareElement.toRecord(dataElement, schemaBuddy);
             list.add(record);
-            cnt++;
+            if (list.size() == BATCH_SIZE) {
+                System.out.printf("Took %dms to parse %d items%n", System.currentTimeMillis() - startTime, list.size());
+
+                ParquetFileCreator parquetFileCreator = new ParquetFileCreator("data", "files");
+                parquetFileCreator.save(sourceSchema.getRootSchema(), list, String.format("skatt-2-levels-v0.53-%d-%04d.parquet", BATCH_SIZE, fileNum));
+                long time = System.currentTimeMillis() - startTime;
+                System.out.printf("Took %dms to parse and create parquet file %d items%n", time, list.size());
+                fileNum++;
+                list.clear();
+                totalTime += time;
+                startTime = System.currentTimeMillis();
+
+                System.out.printf("Processed %d of %d%n", fileNum, COUNT_TO_GENERATE / BATCH_SIZE);
+            }
         }
-
-        System.out.printf("Took %dms to parse %d items", System.currentTimeMillis() - startTime, cnt);
-
-        ParquetFileCreator parquetFileCreator = new ParquetFileCreator("data", "files");
-
-        deleteOldFiles();
-
-        parquetFileCreator.save(sourceSchema.getRootSchema(), list, "skatt-2-levels-v0.29.parquet");
-        System.out.printf("Took %dms to parse and create parquet file %d items", System.currentTimeMillis() - startTime, cnt);
-    }
-
-    private static void deleteOldFiles() {
-        try {
-            File directory = new File("data/files");
-            FileUtils.deleteDirectory(directory);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        System.out.printf("Took %dms to parse and create parquet files %d items%n", totalTime, COUNT_TO_GENERATE);
     }
 
     public static class ParquetFileCreator {

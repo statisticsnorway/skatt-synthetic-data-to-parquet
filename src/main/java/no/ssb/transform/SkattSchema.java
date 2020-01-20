@@ -10,7 +10,7 @@ public class SkattSchema {
     public Schema getRootSchema() {
 
         try {
-            return new Schema.Parser().parse(new File("skatt-v0.29.avsc"));
+            return new Schema.Parser().parse(new File("skatt-v0.53.avsc"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

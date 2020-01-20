@@ -14,9 +14,15 @@ public class GenerateSyntheticData implements Iterable<DataElement> {
     long newPersIdNumber = 1_000_000_000;
 
     private final SchemaBuddy schemaBuddy;
+    private final int numToGenerate;
+
+    public GenerateSyntheticData(Schema schema, int numToGenerate) {
+        schemaBuddy = SchemaBuddy.parse(schema);
+        this.numToGenerate = numToGenerate;
+    }
 
     public GenerateSyntheticData(Schema schema) {
-        schemaBuddy = SchemaBuddy.parse(schema);
+        this(schema, 100);
     }
 
     void printSchema() {
@@ -76,7 +82,7 @@ public class GenerateSyntheticData implements Iterable<DataElement> {
         return new Iterator<DataElement>() {
             @Override
             public boolean hasNext() {
-                return count < 5000;
+                return count < numToGenerate;
             }
 
             @Override
