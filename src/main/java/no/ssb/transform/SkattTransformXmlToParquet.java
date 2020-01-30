@@ -76,9 +76,9 @@ public class SkattTransformXmlToParquet {
         System.out.printf("Took %dms to parse and create parquet files %d items%n", totalTime, totalItemCount);
     }
 
-    private static Schema getSchema(String avroJsonSchemaFile) {
+    static Schema getSchema(String avroJsonSchemaFile) {
         try {
-            return new Schema.Parser().parse(new File("skatt-v0.53.avsc"));
+            return new Schema.Parser().parse(new File(avroJsonSchemaFile));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

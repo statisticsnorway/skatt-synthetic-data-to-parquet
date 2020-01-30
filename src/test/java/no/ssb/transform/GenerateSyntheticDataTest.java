@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 class GenerateSyntheticDataTest {
 
-    Schema schema = new SkattSchema().getRootSchema();
+    Schema schema = SkattTransformXmlToParquet.getSchema("skatt-v0.53.avsc");
 
     @Test
     void test() {
@@ -19,11 +19,9 @@ class GenerateSyntheticDataTest {
     @Test
     void test2() {
         GenerateSyntheticData generateSyntheticData = new GenerateSyntheticData(schema);
-
         DataElement element = generateSyntheticData.parse();
 
         System.out.println(element.toString(true));
-//        System.out.println(element.findChildByName("personidentifikator").toString());
     }
 
     @Test
