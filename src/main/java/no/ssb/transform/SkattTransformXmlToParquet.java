@@ -9,38 +9,60 @@ import no.ssb.lds.data.client.LocalBackend;
 import no.ssb.lds.data.client.ParquetProvider;
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
+import org.apache.commons.io.FileUtils;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SkattTransformXmlToParquet {
 
-    private static final int COUNT_TO_GENERATE = 50_000 * 100;
-    private static final int BATCH_SIZE = 50_000;
+    private static final String OUTUT_FOLDER = "output";
+
 
     // A simple command line app to generate a parquet from random data
     public static void main(String[] args) {
+        if (args.length < 4) {
+            System.out.println("Usage: java -jar skatt-synthetic-data-to-parquet.jar <schema.avsc> <batchsize> <numbatches> <outfolder> [delete-existing-output=true] \n"
+                    + "Example\n"
+                    + "skatt-synthetic-data-to-parquet.jar skatt-v0.53.avsc 10000 10 files delete-existing-output=true\n");
+            return;
+        }
 
-        SkattSchema sourceSchema = new SkattSchema();
+        String avroSchemaFileName = args[0];
+        int batchSize = Integer.parseInt(args[1]);
+        int numBatches = Integer.parseInt(args[2]);
+        String outFolder = args[3];
 
-        SchemaBuddy schemaBuddy = SchemaBuddy.parse(sourceSchema.getRootSchema());
-        createFile(sourceSchema, schemaBuddy);
+        if (args.length > 4 && args[4].equals("delete-existing-output=true")) {
+            System.out.println("Deleting previous files");
+            deleteOldFiles(outFolder);
+        }
+
+        createFiles(avroSchemaFileName, batchSize, numBatches, outFolder);
     }
 
-    private static void createFile(SkattSchema sourceSchema, SchemaBuddy schemaBuddy) {
+    private static void createFiles(String avroSchemaFileName, int batchSize, int numBatches, String outFolder) {
+        int totalItemCount = batchSize * numBatches;
+        Schema schema = getSchema(avroSchemaFileName);
+        SchemaBuddy schemaBuddy = SchemaBuddy.parse(schema);
+        String filePrefix = avroSchemaFileName.split("\\.avsc")[0];
+
         long startTime = System.currentTimeMillis();
         int fileNum = 0;
-        List<GenericRecord> list = new ArrayList<>(COUNT_TO_GENERATE);
+        List<GenericRecord> list = new ArrayList<>(batchSize);
         long totalTime = 0;
-        GenerateSyntheticData generateSyntheticData = new GenerateSyntheticData(sourceSchema.getRootSchema(), COUNT_TO_GENERATE);
+
+        GenerateSyntheticData generateSyntheticData = new GenerateSyntheticData(schema, totalItemCount);
         for (DataElement dataElement : generateSyntheticData) {
             GenericRecord record = SchemaAwareElement.toRecord(dataElement, schemaBuddy);
             list.add(record);
-            if (list.size() == BATCH_SIZE) {
+            if (list.size() == batchSize) {
                 System.out.printf("Took %dms to parse %d items%n", System.currentTimeMillis() - startTime, list.size());
 
-                ParquetFileCreator parquetFileCreator = new ParquetFileCreator("data", "files");
-                parquetFileCreator.save(sourceSchema.getRootSchema(), list, String.format("skatt-2-levels-v0.53-%d-%04d.parquet", BATCH_SIZE, fileNum));
+                ParquetFileCreator parquetFileCreator = new ParquetFileCreator(OUTUT_FOLDER, outFolder);
+                parquetFileCreator.save(schema, list, String.format("%s-%d-%04d.parquet", filePrefix, batchSize, fileNum));
                 long time = System.currentTimeMillis() - startTime;
                 System.out.printf("Took %dms to parse and create parquet file %d items%n", time, list.size());
                 fileNum++;
@@ -48,11 +70,34 @@ public class SkattTransformXmlToParquet {
                 totalTime += time;
                 startTime = System.currentTimeMillis();
 
-                System.out.printf("Processed %d of %d%n", fileNum, COUNT_TO_GENERATE / BATCH_SIZE);
+                System.out.printf("Processed file %d of %d%n", fileNum, numBatches);
             }
         }
-        System.out.printf("Took %dms to parse and create parquet files %d items%n", totalTime, COUNT_TO_GENERATE);
+        System.out.printf("Took %dms to parse and create parquet files %d items%n", totalTime, totalItemCount);
     }
+
+    private static Schema getSchema(String avroJsonSchemaFile) {
+        try {
+            return new Schema.Parser().parse(new File("skatt-v0.53.avsc"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static void deleteOldFiles(String parquetFilesFolder) {
+        try {
+            File directory = new File(OUTUT_FOLDER + "/" + parquetFilesFolder);
+            if(directory.exists()) {
+                System.out.println("Deleting " + directory.toString());
+                FileUtils.deleteDirectory(directory);
+            } else {
+                System.out.println("No previous data in " + directory.toString());
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public static class ParquetFileCreator {
 
