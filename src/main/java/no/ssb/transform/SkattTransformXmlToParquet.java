@@ -4,6 +4,7 @@ import io.reactivex.Flowable;
 import no.ssb.avro.convert.core.DataElement;
 import no.ssb.avro.convert.core.SchemaAwareElement;
 import no.ssb.avro.convert.core.SchemaBuddy;
+import no.ssb.avro.generate.GenerateSyntheticData;
 import no.ssb.lds.data.client.DataClient;
 import no.ssb.lds.data.client.LocalBackend;
 import no.ssb.lds.data.client.ParquetProvider;
@@ -54,7 +55,7 @@ public class SkattTransformXmlToParquet {
         List<GenericRecord> list = new ArrayList<>(batchSize);
         long totalTime = 0;
 
-        FieldChildGenerator fieldHandler = new FieldChildGenerator();
+        SkattFieldInterceptor fieldHandler = new SkattFieldInterceptor();
         GenerateSyntheticData generateSyntheticData = new GenerateSyntheticData(schema, totalItemCount, fieldHandler);
         for (DataElement dataElement : generateSyntheticData) {
             GenericRecord record = SchemaAwareElement.toRecord(dataElement, schemaBuddy);

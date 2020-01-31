@@ -36,8 +36,8 @@
         </dependency>
 
         <dependency>
-            <groupId>no.ssb.avro.convert.core</groupId>
-            <artifactId>avro-buddy-core</artifactId>
+            <groupId>no.ssb.avro.generate</groupId>
+            <artifactId>avro-buddy-generator</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
