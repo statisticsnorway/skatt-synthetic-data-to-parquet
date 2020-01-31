@@ -12,9 +12,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 class GenerateSyntheticDataTest {
 
     Schema schema = SkattTransformXmlToParquet.getSchema("skatt-v0.53.avsc");
+    FieldChildGenerator fieldChildGenerator = new FieldChildGenerator();
 
     long persIdNumber = 1_000_000_000;
-    GenerateSyntheticData.FieldHandler fieldHandler = (type, field, value) -> {
+    GenerateSyntheticData.FieldHandler fieldHandler = (type, field, value, number) -> {
         if (field.equals("personidentifikator")) {
             return Long.toString(persIdNumber);
         }
@@ -47,9 +48,7 @@ class GenerateSyntheticDataTest {
     @Test
     void test3() {
         AtomicInteger cnt = new AtomicInteger();
-        GenerateSyntheticData generateSyntheticData = new GenerateSyntheticData(schema, 10, null, () ->
-                cnt.getAndIncrement() % 3
-        );
+        GenerateSyntheticData generateSyntheticData = new GenerateSyntheticData(schema, 2, fieldChildGenerator);
 
         for (DataElement element : generateSyntheticData) {
             System.out.println(element.toString(true));
@@ -59,7 +58,7 @@ class GenerateSyntheticDataTest {
 
     @Test
     void test4() {
-        GenerateSyntheticData generateSyntheticData = new GenerateSyntheticData(schema, 10, (type, field, value) -> {
+        GenerateSyntheticData generateSyntheticData = new GenerateSyntheticData(schema, 10, (type, field, value, number) -> {
             System.out.println(type);
             System.out.println(field);
             System.out.println(value);

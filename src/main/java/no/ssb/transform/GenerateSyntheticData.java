@@ -9,16 +9,21 @@ import java.util.Random;
 
 public class GenerateSyntheticData implements Iterable<DataElement> {
     private static final int DEFAULT_CHILD_COUNT = 2;
+    private RowHandler rowHandler;
 
     public interface FieldHandler {
-        String field(Schema.Type type, String field, String value);
+        String field(Schema.Type type, String field, String value, int rowNum);
     }
 
     public interface ChildCountHandler {
-        int getChildCount();
+        int getChildCount(int rowNum);
     }
 
-    public interface FieldChildHandler extends FieldHandler, ChildCountHandler {
+    public interface RowHandler {
+        int onNewRow(int rowNum);
+    }
+
+    public interface FieldChildHandler extends FieldHandler, ChildCountHandler, RowHandler {
 
     }
 
@@ -31,7 +36,7 @@ public class GenerateSyntheticData implements Iterable<DataElement> {
     private final ChildCountHandler childCountHandler;
 
     public GenerateSyntheticData(Schema schema, int numToGenerate, FieldHandler fieldHandler) {
-        this(schema, numToGenerate, fieldHandler, () -> DEFAULT_CHILD_COUNT);
+        this(schema, numToGenerate, fieldHandler, (i) -> DEFAULT_CHILD_COUNT);
     }
 
     public GenerateSyntheticData(Schema schema, int numToGenerate, FieldChildHandler fieldChildHandler) {
@@ -39,23 +44,18 @@ public class GenerateSyntheticData implements Iterable<DataElement> {
     }
 
     public GenerateSyntheticData(Schema schema, int numToGenerate, FieldHandler fieldHandler, ChildCountHandler childCountHandler) {
+        this(schema, numToGenerate, fieldHandler, childCountHandler, null);
+    }
+
+    public GenerateSyntheticData(Schema schema, int numToGenerate, FieldHandler fieldHandler, ChildCountHandler childCountHandler, RowHandler rowHandler) {
         schemaBuddy = SchemaBuddy.parse(schema);
         this.numToGenerate = numToGenerate;
         this.childCountHandler = childCountHandler;
-        long persIdNumber = 1_000_000_000;
-        if (fieldHandler == null) {
-            fieldHandler = (type, field, value) -> {
-                if (type == Schema.Type.STRING && field.equals("personidentifikator")) {
-                    return Long.toString(persIdNumber + getCount());
-                }
-                return value;
-            };
-        }
         this.fieldHandler = fieldHandler;
-    }
-
-    public Integer getCount() {
-        return count;
+        if (rowHandler == null) {
+            rowHandler = rowNum -> count;
+        }
+        this.rowHandler = rowHandler;
     }
 
     void printSchema() {
@@ -71,7 +71,7 @@ public class GenerateSyntheticData implements Iterable<DataElement> {
     DataElement parse(DataElement dataElement, SchemaBuddy schemaBuddy, int arrayElementCount) {
         for (SchemaBuddy childSchema : schemaBuddy.getChildren()) {
             if (childSchema.isArrayType()) {
-                for (int i = 0; i < childCountHandler.getChildCount(); i++) {
+                for (int i = 0; i < childCountHandler.getChildCount(0); i++) {
                     parse(dataElement, childSchema, i);
                     arrayElementCount++;
                 }
@@ -90,7 +90,7 @@ public class GenerateSyntheticData implements Iterable<DataElement> {
     }
 
     String intercept(SchemaBuddy schemaBuddy, String defaultValue) {
-        return fieldHandler.field(schemaBuddy.getType(), schemaBuddy.getName(), defaultValue);
+        return fieldHandler.field(schemaBuddy.getType(), schemaBuddy.getName(), defaultValue, 0);
     }
 
     String getData(SchemaBuddy schema, int arrayElementCount) {
@@ -117,7 +117,7 @@ public class GenerateSyntheticData implements Iterable<DataElement> {
 
             @Override
             public DataElement next() {
-                count++;
+                rowHandler.onNewRow(count++);
                 return parse();
             }
         };
