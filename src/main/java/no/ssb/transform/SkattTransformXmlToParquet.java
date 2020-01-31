@@ -54,7 +54,8 @@ public class SkattTransformXmlToParquet {
         List<GenericRecord> list = new ArrayList<>(batchSize);
         long totalTime = 0;
 
-        GenerateSyntheticData generateSyntheticData = new GenerateSyntheticData(schema, totalItemCount);
+        FieldChildGenerator fieldHandler = new FieldChildGenerator();
+        GenerateSyntheticData generateSyntheticData = new GenerateSyntheticData(schema, totalItemCount, fieldHandler);
         for (DataElement dataElement : generateSyntheticData) {
             GenericRecord record = SchemaAwareElement.toRecord(dataElement, schemaBuddy);
             list.add(record);
@@ -87,7 +88,7 @@ public class SkattTransformXmlToParquet {
     private static void deleteOldFiles(String parquetFilesFolder) {
         try {
             File directory = new File(OUTUT_FOLDER + "/" + parquetFilesFolder);
-            if(directory.exists()) {
+            if (directory.exists()) {
                 System.out.println("Deleting " + directory.toString());
                 FileUtils.deleteDirectory(directory);
             } else {

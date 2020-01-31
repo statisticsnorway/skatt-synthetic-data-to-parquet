@@ -8,21 +8,54 @@ import java.util.Iterator;
 import java.util.Random;
 
 public class GenerateSyntheticData implements Iterable<DataElement> {
-    private static final int CHILD_COUNT = 2;
-    private Integer count = 0;
-    private final Random random = new Random(0);
-    long newPersIdNumber = 1_000_000_000;
+    private static final int DEFAULT_CHILD_COUNT = 2;
+    private RowHandler rowHandler;
 
-    private final SchemaBuddy schemaBuddy;
-    private final int numToGenerate;
-
-    public GenerateSyntheticData(Schema schema, int numToGenerate) {
-        schemaBuddy = SchemaBuddy.parse(schema);
-        this.numToGenerate = numToGenerate;
+    public interface FieldHandler {
+        String field(Schema.Type type, String field, String value, int rowNum);
     }
 
-    public GenerateSyntheticData(Schema schema) {
-        this(schema, 100);
+    public interface ChildCountHandler {
+        int getChildCount(int rowNum);
+    }
+
+    public interface RowHandler {
+        int onNewRow(int rowNum);
+    }
+
+    public interface FieldChildHandler extends FieldHandler, ChildCountHandler, RowHandler {
+
+    }
+
+    private Integer count = 0;
+
+    private final Random random = new Random(0);
+    private final SchemaBuddy schemaBuddy;
+    private final int numToGenerate;
+    private final FieldHandler fieldHandler;
+    private final ChildCountHandler childCountHandler;
+
+    public GenerateSyntheticData(Schema schema, int numToGenerate, FieldHandler fieldHandler) {
+        this(schema, numToGenerate, fieldHandler, (i) -> DEFAULT_CHILD_COUNT);
+    }
+
+    public GenerateSyntheticData(Schema schema, int numToGenerate, FieldChildHandler fieldChildHandler) {
+        this(schema, numToGenerate, fieldChildHandler, fieldChildHandler);
+    }
+
+    public GenerateSyntheticData(Schema schema, int numToGenerate, FieldHandler fieldHandler, ChildCountHandler childCountHandler) {
+        this(schema, numToGenerate, fieldHandler, childCountHandler, null);
+    }
+
+    public GenerateSyntheticData(Schema schema, int numToGenerate, FieldHandler fieldHandler, ChildCountHandler childCountHandler, RowHandler rowHandler) {
+        schemaBuddy = SchemaBuddy.parse(schema);
+        this.numToGenerate = numToGenerate;
+        this.childCountHandler = childCountHandler;
+        this.fieldHandler = fieldHandler;
+        if (rowHandler == null) {
+            rowHandler = rowNum -> count;
+        }
+        this.rowHandler = rowHandler;
     }
 
     void printSchema() {
@@ -38,7 +71,7 @@ public class GenerateSyntheticData implements Iterable<DataElement> {
     DataElement parse(DataElement dataElement, SchemaBuddy schemaBuddy, int arrayElementCount) {
         for (SchemaBuddy childSchema : schemaBuddy.getChildren()) {
             if (childSchema.isArrayType()) {
-                for (int i = 0; i < CHILD_COUNT; i++) {
+                for (int i = 0; i < childCountHandler.getChildCount(0); i++) {
                     parse(dataElement, childSchema, i);
                     arrayElementCount++;
                 }
@@ -56,19 +89,16 @@ public class GenerateSyntheticData implements Iterable<DataElement> {
         return dataElement;
     }
 
-    String insertData(SchemaBuddy schemaBuddy) {
-        if (schemaBuddy.getName().equals("personidentifikator")) {
-            return Long.toString(newPersIdNumber);
-        }
-        return null;
+    String intercept(SchemaBuddy schemaBuddy, String defaultValue) {
+        return fieldHandler.field(schemaBuddy.getType(), schemaBuddy.getName(), defaultValue, 0);
     }
 
     String getData(SchemaBuddy schema, int arrayElementCount) {
-        String data = insertData(schema);
-        if (data != null) {
-            return data;
-        }
+        String generatedData = generatedData(schema, arrayElementCount);
+        return intercept(schema, generatedData);
+    }
 
+    private String generatedData(SchemaBuddy schema, int arrayElementCount) {
         assert schema.isSimpleType();
         if (schema.getType() == Schema.Type.STRING) {
             return schema.getName() + "_" + count + "_" + arrayElementCount;
@@ -79,7 +109,7 @@ public class GenerateSyntheticData implements Iterable<DataElement> {
     @Override
     public Iterator<DataElement> iterator() {
 
-        return new Iterator<DataElement>() {
+        return new Iterator<>() {
             @Override
             public boolean hasNext() {
                 return count < numToGenerate;
@@ -87,8 +117,7 @@ public class GenerateSyntheticData implements Iterable<DataElement> {
 
             @Override
             public DataElement next() {
-                count++;
-                newPersIdNumber++;
+                rowHandler.onNewRow(count++);
                 return parse();
             }
         };
