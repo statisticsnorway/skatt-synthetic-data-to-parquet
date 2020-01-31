@@ -6,12 +6,35 @@ import org.apache.avro.Schema;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
-class GenerateSyntheticDataTest {
+class GenerateSyntheticDataSkattTest {
 
     Schema schema = SkattTransformXmlToParquet.getSchema("skatt-v0.53.avsc");
     FieldChildGenerator fieldChildGenerator = new FieldChildGenerator();
+
+    long persIdNumber = 1_000_000_000;
+    GenerateSyntheticData.FieldHandler fieldHandler = (type, field, value, number) -> {
+        if (field.equals("personidentifikator")) {
+            return Long.toString(persIdNumber);
+        }
+        return value;
+    };
+
+    @Test
+    void test() {
+        GenerateSyntheticData generateSyntheticData = new GenerateSyntheticData(schema, 10, null);
+        generateSyntheticData.printSchema();
+    }
+
+    @Test
+    void test2() {
+        GenerateSyntheticData generateSyntheticData = new GenerateSyntheticData(schema, 1, null);
+        DataElement element = generateSyntheticData.parse();
+
+        System.out.println(element.toString(true));
+    }
 
     @Test
     void testFieldHandler() {
@@ -21,6 +44,33 @@ class GenerateSyntheticDataTest {
 
         System.out.println(element.toString(true));
     }
+
+    @Test
+    void test3() {
+        AtomicInteger cnt = new AtomicInteger();
+        GenerateSyntheticData generateSyntheticData = new GenerateSyntheticData(schema, 2, fieldChildGenerator);
+
+        for (DataElement element : generateSyntheticData) {
+            System.out.println(element.toString(true));
+//            System.out.println(element.findChildByName("konto").toString(true));
+        }
+    }
+
+    @Test
+    void test4() {
+        GenerateSyntheticData generateSyntheticData = new GenerateSyntheticData(schema, 10, (type, field, value, number) -> {
+            System.out.println(type);
+            System.out.println(field);
+            System.out.println(value);
+            return value;
+        });
+
+        for (DataElement element : generateSyntheticData) {
+//            System.out.println(element.toString(false));
+            System.out.println(element.findChildByName("personidentifikator").toString());
+        }
+    }
+
     @Test
     void test5() throws IOException {
 
