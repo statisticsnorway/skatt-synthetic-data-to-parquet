@@ -6,12 +6,15 @@ import no.ssb.avro.generate.GeneratedField;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SkattFieldInterceptor extends FieldInterceptor {
 
-    private final long persIdNumber = 1_000_000_000;
-    private final long persIdNumberBarn = 2_000_000_000;
+    private static final long PERS_ID_NUMBER = 1_000_000_000;
+    private static final long PERS_ID_NUMBER_BARN = 2_000_000_000;
+
     private final LocalDateTime start = LocalDateTime.of(2019, 1, 1, 0, 0);
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 
@@ -20,17 +23,17 @@ public class SkattFieldInterceptor extends FieldInterceptor {
         switch (schema.getName()) {
             case "personidentifikator":
                 if (schema.getParent().getName().equals("barnSomGirRettTilForeldrefradrag")) {
-                    long arrayPersIdNumberBarn = persIdNumber * (arrayElementNum + 2);
+                    long arrayPersIdNumberBarn = PERS_ID_NUMBER * (arrayElementNum + 2);
                     return GeneratedField.fromLong(arrayPersIdNumberBarn + rowNum);
                 }
-                return GeneratedField.fromLong(persIdNumber + rowNum);
+                return GeneratedField.fromLong(PERS_ID_NUMBER + rowNum);
             case "navn":
                 if (schema.getParent().getName().equals("barnSomGirRettTilForeldrefradrag")) {
                     return GeneratedField.fromString("barn " + (arrayElementNum + 1));
                 }
                 break;
             case "barnSomGirRettTilForeldrefradrag":
-                return GeneratedField.fromLong(persIdNumberBarn + rowNum);
+                return GeneratedField.fromLong(PERS_ID_NUMBER_BARN + rowNum);
             case "inntektsaar":
                 if ((rowNum % 10 == 0)) return GeneratedField.fromString("2018");
                 return GeneratedField.fromString("2019");
@@ -38,7 +41,7 @@ public class SkattFieldInterceptor extends FieldInterceptor {
                 if ((rowNum % 10 == 0) && random.nextBoolean()) return GeneratedField.fromString("true");
                 return GeneratedField.fromString("false");
             case "landkode":
-                if ((rowNum % 1000 == 0)) return GeneratedField.missingStatus();
+//                if ((rowNum % 1000 == 0)) return GeneratedField.missingStatus();
                 if ((rowNum % 10 == 0)) return GeneratedField.fromString("DK");
                 return GeneratedField.fromString("NO");
             case "andelAvFribeloep":
@@ -56,7 +59,7 @@ public class SkattFieldInterceptor extends FieldInterceptor {
     }
 
     GeneratedField getPensionType(SchemaBuddy schema, int rowNum, int arrayElementNum) {
-        final List<String> personTypes = List.of(
+        final List<String> personTypes = Arrays.asList(
                 "Ektefelletillegg",
                 "ufoeretrygdFraFolketrygden",
                 "ufoereytelseFraIPAOgIPS",
@@ -75,7 +78,7 @@ public class SkattFieldInterceptor extends FieldInterceptor {
     }
 
     GeneratedField getPensionSchemeType(SchemaBuddy schema, int rowNum, int arrayElementNum) {
-        final List<String> pensionSchemeTypes = List.of(
+        final List<String> pensionSchemeTypes = Arrays.asList(
                 "individuellPensjonsavtale",
                 "skattefavorisertIndividuellSparingTilPensjon",
                 "pensjonsavtale"
@@ -90,16 +93,19 @@ public class SkattFieldInterceptor extends FieldInterceptor {
 
     @Override
     public int getChildCount(int rowNum) {
-        return random.nextInt(5);
+         return 2;
+//        return random.nextInt(2);
     }
 
     @Override
     public boolean skipRecord(SchemaBuddy schema, int rowNum, int level) {
-        return random.nextBoolean();
+        return false;
+//        return random.nextBoolean();
     }
 
     @Override
     public boolean skipField(SchemaBuddy schema, int rowNum, int level) {
-        return random.nextBoolean();
+        return false;
+//        return random.nextBoolean();
     }
 }
