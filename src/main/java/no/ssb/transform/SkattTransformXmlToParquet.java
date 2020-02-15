@@ -30,14 +30,24 @@ public class SkattTransformXmlToParquet {
             deleteOldFiles(outFolder);
         }
 
-        createFiles(avroSchemaFileName, batchSize, numBatches, outFolder, rowGroupSize);
+        ParquetFileHandler.Builder builder = new ParquetFileHandler.Builder();
+        ParquetFileHandler fileHandler = builder.addAvroSchemaFileName(avroSchemaFileName)
+                .addAvroSchemaFileName(avroSchemaFileName)
+                .addBatchSize(batchSize)
+                .addNumBatches(numBatches)
+                .addRowGroupSize(rowGroupSize)
+                .addFolder(outFolder)
+                .build();
+
+        fileHandler.createFiles();
+//        createFiles(avroSchemaFileName, batchSize, numBatches, outFolder, rowGroupSize);
     }
 
-    private static void createFiles(String avroSchemaFileName, int batchSize, int numBatches, String outFolder, int rowGroupSize) {
-        ParquetFileHandler parquetFileHandler = new ParquetFileHandler(outFolder, rowGroupSize);
-
-        parquetFileHandler.createFiles(avroSchemaFileName, batchSize, numBatches);
-    }
+//    private static void createFiles(String avroSchemaFileName, int batchSize, int numBatches, String outFolder, int rowGroupSize) {
+//        ParquetFileHandler parquetFileHandler = new ParquetFileHandler(outFolder, rowGroupSize);
+//
+//        parquetFileHandler.createFiles(avroSchemaFileName, batchSize, numBatches);
+//    }
 
     static Schema getSchema(String avroJsonSchemaFile) {
         try {
