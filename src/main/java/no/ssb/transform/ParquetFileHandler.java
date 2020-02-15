@@ -24,8 +24,12 @@ public class ParquetFileHandler {
     public ParquetFileHandler(Builder options) {
         this.options = options;
 
-        System.out.println("Output: " + options.folder);
+        System.out.println("Output:       " + options.folder);
         System.out.println("rowGroupSize: " + options.rowGroupSize + " Mb");
+        System.out.println("numBatches:   " + options.numBatches);
+        System.out.println("batchSize:    " + options.batchSize);
+        System.out.println("startBatch:    " + options.startBatch);
+        System.out.println("startId:    " + options.getStartId());
         ParquetProvider.Configuration parquetConfiguration = new ParquetProvider.Configuration();
         parquetConfiguration.setPageSize(8 * 1024 * 1024);
         parquetConfiguration.setRowGroupSize(options.rowGroupSize * 1024 * 1024);
@@ -45,25 +49,23 @@ public class ParquetFileHandler {
         Schema schema = getSchema(options.avroSchemaFileName);
         String filePrefix = options.avroSchemaFileName.split("\\.avsc")[0];
 
-        int fileNum = 0;
         long totalTime = 0;
 
         SkattFieldInterceptor fieldHandler = new SkattFieldInterceptor();
-        GenerateSyntheticData dataElements = new GenerateSyntheticData(schema, totalItemCount, fieldHandler, 0);
+        GenerateSyntheticData dataElements = new GenerateSyntheticData(schema, totalItemCount, fieldHandler, options.getStartId());
         Iterable<GenericRecord> genericRecords = records(dataElements.iterator(), dataElements.getSchemaBuddy());
         Flowable<GenericRecord> records = Flowable.fromIterable(genericRecords);
-        for (int i = 0; i < options.numBatches; i++) {
+        for (int i = options.startBatch; i < options.numBatches; i++) {
             long startTime = System.currentTimeMillis();
             Flowable<GenericRecord> batch = records.take(options.batchSize);
-            save(schema, batch, String.format("%s-%d-%04d.parquet", filePrefix, options.batchSize, fileNum));
+            save(schema, batch, String.format("%s-%d-%04d.parquet", filePrefix, options.batchSize, i));
             long time = System.currentTimeMillis() - startTime;
-            System.out.printf("Took %4.2f sec for %d items (%d/%d)%n", time/1000f, options.batchSize, i, options.numBatches);
-            fileNum++;
+            System.out.printf("Took %4.2f sec for %d items (%d/%d)%n", time / 1000f, options.batchSize, i, options.numBatches);
             totalTime += time;
         }
 
-        System.out.printf("Processed file %d of %d%n", fileNum, options.numBatches);
-        System.out.printf("Took %4.2f hours to parse and create parquet files %d items%n", totalTime/(1000f*60*60), totalItemCount);
+        System.out.printf("Processed file %d of %d%n", options.numBatches, options.numBatches);
+        System.out.printf("Took %4.2f hours to parse and create parquet files %d items%n", totalTime / (1000f * 60 * 60), totalItemCount);
     }
 
     static Schema getSchema(String avroJsonSchemaFile) {
@@ -98,6 +100,7 @@ public class ParquetFileHandler {
         private String avroSchemaFileName;
         private int batchSize;
         private int numBatches;
+        private int startBatch;
 
         public Builder addFolder(String folder) {
             this.folder = folder;
@@ -114,10 +117,20 @@ public class ParquetFileHandler {
             return this;
         }
 
+        public int getStartId() {
+            return startBatch * batchSize;
+        }
+
+        public Builder addStartBatch(int startBatch) {
+            this.startBatch = startBatch;
+            return this;
+        }
+
         public Builder addBatchSize(int batchSize) {
             this.batchSize = batchSize;
             return this;
         }
+
         public Builder addNumBatches(int numBatches) {
             this.numBatches = numBatches;
             return this;

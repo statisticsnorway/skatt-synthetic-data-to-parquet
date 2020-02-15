@@ -24,8 +24,9 @@ public class SkattTransformXmlToParquet {
         int numBatches = Integer.parseInt(args[2]);
         int rowGroupSize = Integer.parseInt(args[3]);
         String outFolder = args[4];
+        int startBatch = Integer.parseInt(args[5]);
 
-        if (args.length > 5 && args[5].equals("delete-existing-output=true")) {
+        if (args.length > 6 && args[6].equals("delete-existing-output=true")) {
             System.out.println("Deleting previous files");
             deleteOldFiles(outFolder);
         }
@@ -35,19 +36,13 @@ public class SkattTransformXmlToParquet {
                 .addAvroSchemaFileName(avroSchemaFileName)
                 .addBatchSize(batchSize)
                 .addNumBatches(numBatches)
+                .addStartBatch(startBatch)
                 .addRowGroupSize(rowGroupSize)
                 .addFolder(outFolder)
                 .build();
 
         fileHandler.createFiles();
-//        createFiles(avroSchemaFileName, batchSize, numBatches, outFolder, rowGroupSize);
     }
-
-//    private static void createFiles(String avroSchemaFileName, int batchSize, int numBatches, String outFolder, int rowGroupSize) {
-//        ParquetFileHandler parquetFileHandler = new ParquetFileHandler(outFolder, rowGroupSize);
-//
-//        parquetFileHandler.createFiles(avroSchemaFileName, batchSize, numBatches);
-//    }
 
     static Schema getSchema(String avroJsonSchemaFile) {
         try {
