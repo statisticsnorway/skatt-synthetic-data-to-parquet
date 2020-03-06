@@ -6,7 +6,6 @@ import no.ssb.avro.generate.GeneratedField;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -103,6 +102,9 @@ public class SkattFieldInterceptor extends FieldInterceptor {
 
     @Override
     public boolean skipField(SchemaBuddy schema, int rowNum, int level) {
+        if (schema.getName().equals("personidentifikator")) {
+            return false;
+        }
         return random.nextBoolean();
     }
 }
