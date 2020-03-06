@@ -41,12 +41,12 @@ public class SkattFieldInterceptor extends FieldInterceptor {
                 if ((rowNum % 10 == 0) && random.nextBoolean()) return GeneratedField.fromString("true");
                 return GeneratedField.fromString("false");
             case "landkode":
-//                if ((rowNum % 1000 == 0)) return GeneratedField.missingStatus();
+                if ((rowNum % 1000 == 0)) return GeneratedField.missingStatus();
                 if ((rowNum % 10 == 0)) return GeneratedField.fromString("DK");
                 return GeneratedField.fromString("NO");
             case "andelAvFribeloep":
                 return createRandom(100);
-            case "registreringsdato":
+            case "registreringstidspunkt":
                 return GeneratedField.fromString(start.plusDays(rowNum).format(formatter));
             case "pensjonstype":
                 return getPensionType(schema, rowNum, arrayElementNum);
@@ -93,19 +93,16 @@ public class SkattFieldInterceptor extends FieldInterceptor {
 
     @Override
     public int getChildCount(int rowNum) {
-         return 2;
-//        return random.nextInt(2);
+        return random.nextInt(5);
     }
 
     @Override
     public boolean skipRecord(SchemaBuddy schema, int rowNum, int level) {
-        return false;
-//        return random.nextBoolean();
+        return random.nextBoolean();
     }
 
     @Override
     public boolean skipField(SchemaBuddy schema, int rowNum, int level) {
-        return false;
-//        return random.nextBoolean();
+        return random.nextBoolean();
     }
 }
