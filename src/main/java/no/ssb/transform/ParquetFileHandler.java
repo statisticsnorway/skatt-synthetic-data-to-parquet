@@ -4,6 +4,7 @@ import io.reactivex.Flowable;
 import no.ssb.avro.convert.core.DataElement;
 import no.ssb.avro.convert.core.SchemaAwareElement;
 import no.ssb.avro.convert.core.SchemaBuddy;
+import no.ssb.avro.generate.FieldInterceptor;
 import no.ssb.avro.generate.GenerateSyntheticData;
 import no.ssb.lds.data.client.DataClient;
 import no.ssb.lds.data.client.LocalBackend;
@@ -24,6 +25,7 @@ public class ParquetFileHandler {
     public ParquetFileHandler(Builder options) {
         this.options = options;
 
+        System.out.println("interceptor:  " + options.fieldInterceptor.getClass().getSimpleName());
         System.out.println("Output:       " + options.folder);
         System.out.println("rowGroupSize: " + options.rowGroupSize + " Mb");
         System.out.println("numBatches:   " + options.numBatches);
@@ -51,8 +53,7 @@ public class ParquetFileHandler {
 
         long totalTime = 0;
 
-        SkattFieldInterceptor fieldHandler = new SkattFieldInterceptor();
-        GenerateSyntheticData dataElements = new GenerateSyntheticData(schema, totalItemCount, fieldHandler, options.getStartId());
+        GenerateSyntheticData dataElements = new GenerateSyntheticData(schema, totalItemCount, options.fieldInterceptor, options.getStartId());
         Iterable<GenericRecord> genericRecords = records(dataElements.iterator(), dataElements.getSchemaBuddy());
         Flowable<GenericRecord> records = Flowable.fromIterable(genericRecords);
         for (int i = options.startBatch; i < options.numBatches; i++) {
@@ -101,6 +102,7 @@ public class ParquetFileHandler {
         private int batchSize;
         private int numBatches;
         private int startBatch;
+        private FieldInterceptor fieldInterceptor;
 
         public Builder addFolder(String folder) {
             this.folder = folder;
@@ -111,6 +113,12 @@ public class ParquetFileHandler {
             this.avroSchemaFileName = avroSchemaFileName;
             return this;
         }
+
+        public Builder addInterceptor(FieldInterceptor fieldInterceptor) {
+            this.fieldInterceptor = fieldInterceptor;
+            return this;
+        }
+
 
         public Builder addRowGroupSize(int rowGroupSize) {
             this.rowGroupSize = rowGroupSize;

@@ -1,0 +1,4036 @@
+{
+  "type" : "record",
+  "name" : "spark_schema",
+  "namespace" : "namespace",
+  "fields" : [ {
+    "name" : "manifest",
+    "type" : [ {
+      "type" : "record",
+      "name" : "manifest",
+      "namespace" : "namespace.spark_schema",
+      "fields" : [ {
+        "name" : "collector",
+        "type" : [ {
+          "type" : "record",
+          "name" : "collector",
+          "namespace" : "namespace.spark_schema.manifest",
+          "fields" : [ {
+            "name" : "ulid",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "position",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "timestamp",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "metadata",
+            "type" : [ {
+              "type" : "array",
+              "items" : [ {
+                "type" : "record",
+                "name" : "metadata",
+                "namespace" : "namespace.spark_schema.manifest.collector",
+                "fields" : [ {
+                  "name" : "requestDurationNanoTime",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "contentLength",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "correlationId",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "contentKey",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "topic",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "resourceType",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "contentType",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "position",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "url",
+                  "type" : [ "string", "null" ]
+                } ]
+              }, "null" ]
+            }, "null" ]
+          } ]
+        }, "null" ]
+      }, {
+        "name" : "converter",
+        "type" : [ {
+          "type" : "record",
+          "name" : "converter",
+          "namespace" : "namespace.spark_schema.manifest",
+          "fields" : [ {
+            "name" : "schemas",
+            "type" : [ {
+              "type" : "map",
+              "values" : [ "string", "null" ]
+            }, "null" ]
+          } ]
+        }, "null" ]
+      } ]
+    }, "null" ]
+  }, {
+    "name" : "hendelse",
+    "type" : [ {
+      "type" : "record",
+      "name" : "hendelse",
+      "namespace" : "namespace.spark_schema",
+      "fields" : [ {
+        "name" : "dokumentidentifikator",
+        "type" : [ "string", "null" ]
+      }, {
+        "name" : "skjemaversjon",
+        "type" : [ "string", "null" ]
+      }, {
+        "name" : "hendelse",
+        "type" : [ {
+          "type" : "record",
+          "name" : "hendelse",
+          "namespace" : "namespace.spark_schema.hendelse",
+          "fields" : [ {
+            "name" : "folkeregisteridentifikator",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "hendelsestype",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "ajourholdstidspunkt",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "egenskapshendelse",
+            "type" : [ {
+              "type" : "array",
+              "items" : [ {
+                "type" : "record",
+                "name" : "egenskapshendelse",
+                "namespace" : "namespace.spark_schema.hendelse.hendelse",
+                "fields" : [ {
+                  "name" : "falskIdentitet",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "falskIdentitet",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "rettIdentitetVedOpplysninger",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "rettIdentitetVedOpplysninger",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.falskIdentitet",
+                        "fields" : [ {
+                          "name" : "personnavn",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "personnavn",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.falskIdentitet.rettIdentitetVedOpplysninger",
+                            "fields" : [ {
+                              "name" : "fornavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "mellomnavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "etternavn",
+                              "type" : [ "string", "null" ]
+                            } ]
+                          }, "null" ]
+                        }, {
+                          "name" : "foedselsdato",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "statsborgerskap",
+                          "type" : [ {
+                            "type" : "array",
+                            "items" : [ "string", "null" ]
+                          }, "null" ]
+                        }, {
+                          "name" : "kjoenn",
+                          "type" : [ "string", "null" ]
+                        } ]
+                      }, "null" ]
+                    }, {
+                      "name" : "rettIdentitetErUkjent",
+                      "type" : [ "boolean", "null" ]
+                    }, {
+                      "name" : "rettIdentitetVedIdentifikasjonsnummer",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "erFalsk",
+                      "type" : [ "boolean", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "identifikasjonsnummer",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "identifikasjonsnummer",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "status",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "foedselsEllerDNummer",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "identifikatortype",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "identitetsgrunnlag",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "identitetsgrunnlag",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "legitimasjonskontroll",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "kontaktinformasjonForDoedsbo",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "kontaktinformasjonForDoedsbo",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "person",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "person",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.kontaktinformasjonForDoedsbo",
+                        "fields" : [ {
+                          "name" : "foedselsdato",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "personnavn",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "personnavn",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.kontaktinformasjonForDoedsbo.person",
+                            "fields" : [ {
+                              "name" : "fornavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "mellomnavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "etternavn",
+                              "type" : [ "string", "null" ]
+                            } ]
+                          }, "null" ]
+                        }, {
+                          "name" : "foedselsEllerDNummer",
+                          "type" : [ "string", "null" ]
+                        } ]
+                      }, "null" ]
+                    }, {
+                      "name" : "advokat",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "advokat",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.kontaktinformasjonForDoedsbo",
+                        "fields" : [ {
+                          "name" : "personnavn",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "personnavn",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.kontaktinformasjonForDoedsbo.advokat",
+                            "fields" : [ {
+                              "name" : "fornavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "mellomnavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "etternavn",
+                              "type" : [ "string", "null" ]
+                            } ]
+                          }, "null" ]
+                        }, {
+                          "name" : "organisasjonsnavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "organisasjonsnummer",
+                          "type" : [ "string", "null" ]
+                        } ]
+                      }, "null" ]
+                    }, {
+                      "name" : "organisasjon",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "organisasjon",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.kontaktinformasjonForDoedsbo",
+                        "fields" : [ {
+                          "name" : "organisasjonsnavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "organisasjonsnummer",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "kontaktpersonnavn",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "kontaktpersonnavn",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.kontaktinformasjonForDoedsbo.organisasjon",
+                            "fields" : [ {
+                              "name" : "fornavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "mellomnavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "etternavn",
+                              "type" : [ "string", "null" ]
+                            } ]
+                          }, "null" ]
+                        } ]
+                      }, "null" ]
+                    }, {
+                      "name" : "skifteform",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "attestutstedelsesdato",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "adresse",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "adresse",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.kontaktinformasjonForDoedsbo",
+                        "fields" : [ {
+                          "name" : "adresselinje",
+                          "type" : [ {
+                            "type" : "array",
+                            "items" : [ "string", "null" ]
+                          }, "null" ]
+                        }, {
+                          "name" : "poststedsnavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "postnummer",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "landkode",
+                          "type" : [ "string", "null" ]
+                        } ]
+                      }, "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "legitimasjonsdokument",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "legitimasjonsdokument",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "identifikasjonsdokumentnummer",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "identifikasjonsdokumenttype",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "utstederland",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "utstedernavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldigFra",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldigTil",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "dokumentkontroll",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "dokumentkontroll",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.legitimasjonsdokument",
+                        "fields" : [ {
+                          "name" : "dokumentkontrollstatus",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "dokumentkontrolltidspunkt",
+                          "type" : [ "string", "null" ]
+                        } ]
+                      }, "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "utlendingsmyndighetenesIdentifikasjonsnummer",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "utlendingsmyndighetenesIdentifikasjonsnummer",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "identifikasjonsnummer",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "identifikasjonsnummertype",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "utstederland",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "utenlandskPersonidentifikasjon",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "utenlandskPersonidentifikasjon",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "identifikasjonsnummer",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "identifikasjonsnummertype",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "utstederland",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "status",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "status",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "status",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "deltBosted",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "deltBosted",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "vegadresse",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "vegadresse",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.deltBosted",
+                        "fields" : [ {
+                          "name" : "kommunenummer",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "bruksenhetsnummer",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "bruksenhetstype",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "adressenavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "adressenummer",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "adressenummer",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.deltBosted.vegadresse",
+                            "fields" : [ {
+                              "name" : "husnummer",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "husbokstav",
+                              "type" : [ "string", "null" ]
+                            } ]
+                          }, "null" ]
+                        }, {
+                          "name" : "adressekode",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "adressetilleggsnavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "poststed",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "poststed",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.deltBosted.vegadresse",
+                            "fields" : [ {
+                              "name" : "poststedsnavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "postnummer",
+                              "type" : [ "string", "null" ]
+                            } ]
+                          }, "null" ]
+                        }, {
+                          "name" : "coAdressenavn",
+                          "type" : [ "string", "null" ]
+                        } ]
+                      }, "null" ]
+                    }, {
+                      "name" : "matrikkeladresse",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "matrikkeladresse",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.deltBosted",
+                        "fields" : [ {
+                          "name" : "bruksenhetsnummer",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "bruksenhetstype",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "matrikkelnummer",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "matrikkelnummer",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.deltBosted.matrikkeladresse",
+                            "fields" : [ {
+                              "name" : "kommunenummer",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "gaardsnummer",
+                              "type" : [ "long", "null" ]
+                            }, {
+                              "name" : "bruksnummer",
+                              "type" : [ "long", "null" ]
+                            }, {
+                              "name" : "festenummer",
+                              "type" : [ "long", "null" ]
+                            } ]
+                          }, "null" ]
+                        }, {
+                          "name" : "undernummer",
+                          "type" : [ "long", "null" ]
+                        }, {
+                          "name" : "adressetilleggsnavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "poststed",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "poststed",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.deltBosted.matrikkeladresse",
+                            "fields" : [ {
+                              "name" : "poststedsnavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "postnummer",
+                              "type" : [ "string", "null" ]
+                            } ]
+                          }, "null" ]
+                        }, {
+                          "name" : "coAdressenavn",
+                          "type" : [ "string", "null" ]
+                        } ]
+                      }, "null" ]
+                    }, {
+                      "name" : "ukjentBosted",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "ukjentBosted",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.deltBosted",
+                        "fields" : [ {
+                          "name" : "bostedskommune",
+                          "type" : [ "string", "null" ]
+                        } ]
+                      }, "null" ]
+                    }, {
+                      "name" : "startdatoForKontrakt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "sluttdatoForKontrakt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "adresseIdentifikatorFraMatrikkelen",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "naerAdresseIdentifikatorFraMatrikkelen",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "adressegradering",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "kjoenn",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "kjoenn",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kjoenn",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "foedsel",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "foedsel",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "foedselsdato",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "foedselsaar",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "foedested",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "foedekommuneINorge",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "foedeland",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "foedselINorge",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "foedselINorge",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "foedselsinstitusjonsnavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "rekkefoelgenummer",
+                      "type" : [ "long", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "familierelasjon",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "familierelasjon",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "relatertPerson",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "relatertPersonUtenFolkeregisteridentifikator",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "relatertPersonUtenFolkeregisteridentifikator",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.familierelasjon",
+                        "fields" : [ {
+                          "name" : "navn",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "navn",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.familierelasjon.relatertPersonUtenFolkeregisteridentifikator",
+                            "fields" : [ {
+                              "name" : "fornavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "mellomnavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "etternavn",
+                              "type" : [ "string", "null" ]
+                            } ]
+                          }, "null" ]
+                        }, {
+                          "name" : "foedselsdato",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "statsborgerskap",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "kjoenn",
+                          "type" : [ "string", "null" ]
+                        } ]
+                      }, "null" ]
+                    }, {
+                      "name" : "relatertPersonsRolle",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "minRolleForPerson",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "sivilstand",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "sivilstand",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "sivilstand",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "sivilstandsdato",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "myndighet",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kommune",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "sted",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "utland",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "relatertVedSivilstand",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "doedsfall",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "doedsfall",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "doedsdato",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "navn",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "navn",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "fornavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "mellomnavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "etternavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "forkortetNavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "originaltNavn",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "originaltNavn",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.navn",
+                        "fields" : [ {
+                          "name" : "fornavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "mellomnavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "etternavn",
+                          "type" : [ "string", "null" ]
+                        } ]
+                      }, "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "adressebeskyttelse",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "adressebeskyttelse",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "graderingsnivaa",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "bostedsadresse",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "bostedsadresse",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "vegadresse",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "vegadresse",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.bostedsadresse",
+                        "fields" : [ {
+                          "name" : "kommunenummer",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "bruksenhetsnummer",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "bruksenhetstype",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "adressenavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "adressenummer",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "adressenummer",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.bostedsadresse.vegadresse",
+                            "fields" : [ {
+                              "name" : "husnummer",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "husbokstav",
+                              "type" : [ "string", "null" ]
+                            } ]
+                          }, "null" ]
+                        }, {
+                          "name" : "adressekode",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "adressetilleggsnavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "poststed",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "poststed",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.bostedsadresse.vegadresse",
+                            "fields" : [ {
+                              "name" : "poststedsnavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "postnummer",
+                              "type" : [ "string", "null" ]
+                            } ]
+                          }, "null" ]
+                        }, {
+                          "name" : "coAdressenavn",
+                          "type" : [ "string", "null" ]
+                        } ]
+                      }, "null" ]
+                    }, {
+                      "name" : "matrikkeladresse",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "matrikkeladresse",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.bostedsadresse",
+                        "fields" : [ {
+                          "name" : "bruksenhetsnummer",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "bruksenhetstype",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "matrikkelnummer",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "matrikkelnummer",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.bostedsadresse.matrikkeladresse",
+                            "fields" : [ {
+                              "name" : "kommunenummer",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "gaardsnummer",
+                              "type" : [ "long", "null" ]
+                            }, {
+                              "name" : "bruksnummer",
+                              "type" : [ "long", "null" ]
+                            }, {
+                              "name" : "festenummer",
+                              "type" : [ "long", "null" ]
+                            } ]
+                          }, "null" ]
+                        }, {
+                          "name" : "undernummer",
+                          "type" : [ "long", "null" ]
+                        }, {
+                          "name" : "adressetilleggsnavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "poststed",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "poststed",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.bostedsadresse.matrikkeladresse",
+                            "fields" : [ {
+                              "name" : "poststedsnavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "postnummer",
+                              "type" : [ "string", "null" ]
+                            } ]
+                          }, "null" ]
+                        }, {
+                          "name" : "coAdressenavn",
+                          "type" : [ "string", "null" ]
+                        } ]
+                      }, "null" ]
+                    }, {
+                      "name" : "ukjentBosted",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "ukjentBosted",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.bostedsadresse",
+                        "fields" : [ {
+                          "name" : "bostedskommune",
+                          "type" : [ "string", "null" ]
+                        } ]
+                      }, "null" ]
+                    }, {
+                      "name" : "adresseIdentifikatorFraMatrikkelen",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "naerAdresseIdentifikatorFraMatrikkelen",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "adressegradering",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "flyttedato",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "grunnkrets",
+                      "type" : [ "long", "null" ]
+                    }, {
+                      "name" : "stemmekrets",
+                      "type" : [ "long", "null" ]
+                    }, {
+                      "name" : "skolekrets",
+                      "type" : [ "long", "null" ]
+                    }, {
+                      "name" : "kirkekrets",
+                      "type" : [ "long", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "oppholdsadresse",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "oppholdsadresse",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "utenlandskAdresse",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "utenlandskAdresse",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.oppholdsadresse",
+                        "fields" : [ {
+                          "name" : "coAdressenavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "adressenavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "bygning",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "etasjenummer",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "boenhet",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "postboks",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "postkode",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "byEllerStedsnavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "distriktsnavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "region",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "landkode",
+                          "type" : [ "string", "null" ]
+                        } ]
+                      }, "null" ]
+                    }, {
+                      "name" : "adressenErUkjent",
+                      "type" : [ "boolean", "null" ]
+                    }, {
+                      "name" : "vegadresse",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "vegadresse",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.oppholdsadresse",
+                        "fields" : [ {
+                          "name" : "kommunenummer",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "bruksenhetsnummer",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "bruksenhetstype",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "adressenavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "adressenummer",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "adressenummer",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.oppholdsadresse.vegadresse",
+                            "fields" : [ {
+                              "name" : "husnummer",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "husbokstav",
+                              "type" : [ "string", "null" ]
+                            } ]
+                          }, "null" ]
+                        }, {
+                          "name" : "adressekode",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "adressetilleggsnavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "poststed",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "poststed",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.oppholdsadresse.vegadresse",
+                            "fields" : [ {
+                              "name" : "poststedsnavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "postnummer",
+                              "type" : [ "string", "null" ]
+                            } ]
+                          }, "null" ]
+                        }, {
+                          "name" : "coAdressenavn",
+                          "type" : [ "string", "null" ]
+                        } ]
+                      }, "null" ]
+                    }, {
+                      "name" : "matrikkeladresse",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "matrikkeladresse",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.oppholdsadresse",
+                        "fields" : [ {
+                          "name" : "bruksenhetsnummer",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "bruksenhetstype",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "matrikkelnummer",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "matrikkelnummer",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.oppholdsadresse.matrikkeladresse",
+                            "fields" : [ {
+                              "name" : "kommunenummer",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "gaardsnummer",
+                              "type" : [ "long", "null" ]
+                            }, {
+                              "name" : "bruksnummer",
+                              "type" : [ "long", "null" ]
+                            }, {
+                              "name" : "festenummer",
+                              "type" : [ "long", "null" ]
+                            } ]
+                          }, "null" ]
+                        }, {
+                          "name" : "undernummer",
+                          "type" : [ "long", "null" ]
+                        }, {
+                          "name" : "adressetilleggsnavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "poststed",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "poststed",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.oppholdsadresse.matrikkeladresse",
+                            "fields" : [ {
+                              "name" : "poststedsnavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "postnummer",
+                              "type" : [ "string", "null" ]
+                            } ]
+                          }, "null" ]
+                        }, {
+                          "name" : "coAdressenavn",
+                          "type" : [ "string", "null" ]
+                        } ]
+                      }, "null" ]
+                    }, {
+                      "name" : "adresseIdentifikatorFraMatrikkelen",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "adressegradering",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "oppholdsadressedato",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "oppholdAnnetSted",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "innflytting",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "innflytting",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "fraflyttingsland",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "fraflyttingsstedIUtlandet",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "utflytting",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "utflytting",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "tilflyttingsland",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "tilflyttingsstedIUtlandet",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "brukAvSamiskSpraak",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "brukAvSamiskSpraak",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "spraak",
+                      "type" : [ {
+                        "type" : "array",
+                        "items" : [ "string", "null" ]
+                      }, "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "postadresse",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "postadresse",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "adressegradering",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "postboksadresse",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "postboksadresse",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.postadresse",
+                        "fields" : [ {
+                          "name" : "postbokseier",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "postboks",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "poststed",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "poststed",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.postadresse.postboksadresse",
+                            "fields" : [ {
+                              "name" : "poststedsnavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "postnummer",
+                              "type" : [ "string", "null" ]
+                            } ]
+                          }, "null" ]
+                        } ]
+                      }, "null" ]
+                    }, {
+                      "name" : "vegadresse",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "vegadresse",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.postadresse",
+                        "fields" : [ {
+                          "name" : "coAdressenavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "adressenavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "adressenummer",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "adressenummer",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.postadresse.vegadresse",
+                            "fields" : [ {
+                              "name" : "husnummer",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "husbokstav",
+                              "type" : [ "string", "null" ]
+                            } ]
+                          }, "null" ]
+                        }, {
+                          "name" : "poststed",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "poststed",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.postadresse.vegadresse",
+                            "fields" : [ {
+                              "name" : "poststedsnavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "postnummer",
+                              "type" : [ "string", "null" ]
+                            } ]
+                          }, "null" ]
+                        }, {
+                          "name" : "adressekode",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "adressetilleggsnavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "bruksenhetsnummer",
+                          "type" : [ "string", "null" ]
+                        } ]
+                      }, "null" ]
+                    }, {
+                      "name" : "postadresseIFrittFormat",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "postadresseIFrittFormat",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.postadresse",
+                        "fields" : [ {
+                          "name" : "adresselinje",
+                          "type" : [ {
+                            "type" : "array",
+                            "items" : [ "string", "null" ]
+                          }, "null" ]
+                        }, {
+                          "name" : "poststed",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "poststed",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.postadresse.postadresseIFrittFormat",
+                            "fields" : [ {
+                              "name" : "poststedsnavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "postnummer",
+                              "type" : [ "string", "null" ]
+                            } ]
+                          }, "null" ]
+                        } ]
+                      }, "null" ]
+                    }, {
+                      "name" : "adresseIdentifikatorFraMatrikkelen",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "postadresseIUtlandet",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "postadresseIUtlandet",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "adressegradering",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "utenlandskAdresse",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "utenlandskAdresse",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.postadresseIUtlandet",
+                        "fields" : [ {
+                          "name" : "coAdressenavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "adressenavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "bygning",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "etasjenummer",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "boenhet",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "postboks",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "postkode",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "byEllerStedsnavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "distriktsnavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "region",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "landkode",
+                          "type" : [ "string", "null" ]
+                        } ]
+                      }, "null" ]
+                    }, {
+                      "name" : "utenlandskAdresseIFrittFormat",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "utenlandskAdresseIFrittFormat",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.postadresseIUtlandet",
+                        "fields" : [ {
+                          "name" : "adresselinje",
+                          "type" : [ {
+                            "type" : "array",
+                            "items" : [ "string", "null" ]
+                          }, "null" ]
+                        }, {
+                          "name" : "postkode",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "byEllerStedsnavn",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "landkode",
+                          "type" : [ "string", "null" ]
+                        } ]
+                      }, "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "foreldreansvar",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "foreldreansvar",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "ansvar",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "ansvarssubjekt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "ansvarlig",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "ansvarligOrganisasjon",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "ansvarligUtenIdentifikator",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "ansvarligUtenIdentifikator",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.foreldreansvar",
+                        "fields" : [ {
+                          "name" : "navn",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "navn",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.foreldreansvar.ansvarligUtenIdentifikator",
+                            "fields" : [ {
+                              "name" : "fornavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "mellomnavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "etternavn",
+                              "type" : [ "string", "null" ]
+                            } ]
+                          }, "null" ]
+                        }, {
+                          "name" : "foedselsdato",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "statsborgerskap",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "kjoenn",
+                          "type" : [ "string", "null" ]
+                        } ]
+                      }, "null" ]
+                    }, {
+                      "name" : "ansvarssubjektUtenIdentifikator",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "ansvarssubjektUtenIdentifikator",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.foreldreansvar",
+                        "fields" : [ {
+                          "name" : "navn",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "navn",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.foreldreansvar.ansvarssubjektUtenIdentifikator",
+                            "fields" : [ {
+                              "name" : "fornavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "mellomnavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "etternavn",
+                              "type" : [ "string", "null" ]
+                            } ]
+                          }, "null" ]
+                        }, {
+                          "name" : "foedselsdato",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "statsborgerskap",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "kjoenn",
+                          "type" : [ "string", "null" ]
+                        } ]
+                      }, "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "statsborgerskap",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "statsborgerskap",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "statsborgerskap",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "ervervsdato",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "bibehold",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "bibehold",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "bibeholdstatus",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "datoForBibehold",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "opphold",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "opphold",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "oppholdstillatelse",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "oppholdFra",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "oppholdTil",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "vergemaalEllerFremtidsfullmakt",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "vergemaalEllerFremtidsfullmakt",
+                    "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse",
+                    "fields" : [ {
+                      "name" : "ajourholdstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "kilde",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "aarsak",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gyldighetstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "opphoerstidspunkt",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "vergemaaltype",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "embete",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "verge",
+                      "type" : [ {
+                        "type" : "record",
+                        "name" : "verge",
+                        "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.vergemaalEllerFremtidsfullmakt",
+                        "fields" : [ {
+                          "name" : "navn",
+                          "type" : [ {
+                            "type" : "record",
+                            "name" : "navn",
+                            "namespace" : "namespace.spark_schema.hendelse.hendelse.egenskapshendelse.vergemaalEllerFremtidsfullmakt.verge",
+                            "fields" : [ {
+                              "name" : "fornavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "mellomnavn",
+                              "type" : [ "string", "null" ]
+                            }, {
+                              "name" : "etternavn",
+                              "type" : [ "string", "null" ]
+                            } ]
+                          }, "null" ]
+                        }, {
+                          "name" : "foedselsEllerDNummer",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "omfang",
+                          "type" : [ "string", "null" ]
+                        }, {
+                          "name" : "omfangetErInnenPersonligOmraade",
+                          "type" : [ "boolean", "null" ]
+                        } ]
+                      }, "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "entitet",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "entitetsendring",
+                  "type" : [ "string", "null" ]
+                } ]
+              }, "null" ]
+            }, "null" ]
+          }, {
+            "name" : "hendelsesaarsakIDsf",
+            "type" : [ "string", "null" ]
+          } ]
+        }, "null" ]
+      } ]
+    }, "null" ]
+  }, {
+    "name" : "person",
+    "type" : [ {
+      "type" : "record",
+      "name" : "person",
+      "namespace" : "namespace.spark_schema",
+      "fields" : [ {
+        "name" : "falskIdentitet",
+        "type" : [ {
+          "type" : "record",
+          "name" : "falskIdentitet",
+          "namespace" : "namespace.spark_schema.person",
+          "fields" : [ {
+            "name" : "ajourholdstidspunkt",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "erGjeldende",
+            "type" : [ "boolean", "null" ]
+          }, {
+            "name" : "kilde",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "aarsak",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "gyldighetstidspunkt",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "opphoerstidspunkt",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "rettIdentitetVedOpplysninger",
+            "type" : [ {
+              "type" : "record",
+              "name" : "rettIdentitetVedOpplysninger",
+              "namespace" : "namespace.spark_schema.person.falskIdentitet",
+              "fields" : [ {
+                "name" : "personnavn",
+                "type" : [ {
+                  "type" : "record",
+                  "name" : "personnavn",
+                  "namespace" : "namespace.spark_schema.person.falskIdentitet.rettIdentitetVedOpplysninger",
+                  "fields" : [ {
+                    "name" : "fornavn",
+                    "type" : [ "string", "null" ]
+                  }, {
+                    "name" : "mellomnavn",
+                    "type" : [ "string", "null" ]
+                  }, {
+                    "name" : "etternavn",
+                    "type" : [ "string", "null" ]
+                  } ]
+                }, "null" ]
+              }, {
+                "name" : "foedselsdato",
+                "type" : [ "string", "null" ]
+              }, {
+                "name" : "statsborgerskap",
+                "type" : [ {
+                  "type" : "array",
+                  "items" : [ "string", "null" ]
+                }, "null" ]
+              }, {
+                "name" : "kjoenn",
+                "type" : [ "string", "null" ]
+              } ]
+            }, "null" ]
+          }, {
+            "name" : "rettIdentitetErUkjent",
+            "type" : [ "boolean", "null" ]
+          }, {
+            "name" : "rettIdentitetVedIdentifikasjonsnummer",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "erFalsk",
+            "type" : [ "boolean", "null" ]
+          } ]
+        }, "null" ]
+      }, {
+        "name" : "identifikasjonsnummer",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "identifikasjonsnummer",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "status",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "foedselsEllerDNummer",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "identifikatortype",
+              "type" : [ "string", "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "identitetsgrunnlag",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "identitetsgrunnlag",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "identitetsgrunnlagstatus",
+              "type" : [ "string", "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "kontaktinformasjonForDoedsbo",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "kontaktinformasjonForDoedsbo",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "person",
+              "type" : [ {
+                "type" : "record",
+                "name" : "person",
+                "namespace" : "namespace.spark_schema.person.kontaktinformasjonForDoedsbo",
+                "fields" : [ {
+                  "name" : "foedselsdato",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "personnavn",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "personnavn",
+                    "namespace" : "namespace.spark_schema.person.kontaktinformasjonForDoedsbo.person",
+                    "fields" : [ {
+                      "name" : "fornavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "mellomnavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "etternavn",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "foedselsEllerDNummer",
+                  "type" : [ "string", "null" ]
+                } ]
+              }, "null" ]
+            }, {
+              "name" : "advokat",
+              "type" : [ {
+                "type" : "record",
+                "name" : "advokat",
+                "namespace" : "namespace.spark_schema.person.kontaktinformasjonForDoedsbo",
+                "fields" : [ {
+                  "name" : "personnavn",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "personnavn",
+                    "namespace" : "namespace.spark_schema.person.kontaktinformasjonForDoedsbo.advokat",
+                    "fields" : [ {
+                      "name" : "fornavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "mellomnavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "etternavn",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "organisasjonsnavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "organisasjonsnummer",
+                  "type" : [ "string", "null" ]
+                } ]
+              }, "null" ]
+            }, {
+              "name" : "organisasjon",
+              "type" : [ {
+                "type" : "record",
+                "name" : "organisasjon",
+                "namespace" : "namespace.spark_schema.person.kontaktinformasjonForDoedsbo",
+                "fields" : [ {
+                  "name" : "organisasjonsnavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "organisasjonsnummer",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "kontaktpersonnavn",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "kontaktpersonnavn",
+                    "namespace" : "namespace.spark_schema.person.kontaktinformasjonForDoedsbo.organisasjon",
+                    "fields" : [ {
+                      "name" : "fornavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "mellomnavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "etternavn",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                } ]
+              }, "null" ]
+            }, {
+              "name" : "skifteform",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "attestutstedelsesdato",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "adresse",
+              "type" : [ {
+                "type" : "record",
+                "name" : "adresse",
+                "namespace" : "namespace.spark_schema.person.kontaktinformasjonForDoedsbo",
+                "fields" : [ {
+                  "name" : "adresselinje",
+                  "type" : [ {
+                    "type" : "array",
+                    "items" : [ "string", "null" ]
+                  }, "null" ]
+                }, {
+                  "name" : "poststedsnavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "postnummer",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "landkode",
+                  "type" : [ "string", "null" ]
+                } ]
+              }, "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "legitimasjonsdokument",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "legitimasjonsdokument",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "identifikasjonsdokumentnummer",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "identifikasjonsdokumenttype",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "utstederland",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "utstedernavn",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldigFra",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldigTil",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "dokumentkontroll",
+              "type" : [ {
+                "type" : "record",
+                "name" : "dokumentkontroll",
+                "namespace" : "namespace.spark_schema.person.legitimasjonsdokument",
+                "fields" : [ {
+                  "name" : "dokumentkontrollstatus",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "dokumentkontrolltidspunkt",
+                  "type" : [ "string", "null" ]
+                } ]
+              }, "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "status",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "status",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "status",
+              "type" : [ "string", "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "utlendingsmyndighetenesIdentifikasjonsnummer",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "utlendingsmyndighetenesIdentifikasjonsnummer",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "identifikasjonsnummer",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "identifikasjonsnummertype",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "utstederland",
+              "type" : [ "string", "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "utenlandskPersonidentifikasjon",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "utenlandskPersonidentifikasjon",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "identifikasjonsnummer",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "identifikasjonsnummertype",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "utstederland",
+              "type" : [ "string", "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "deltBosted",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "deltBosted",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "vegadresse",
+              "type" : [ {
+                "type" : "record",
+                "name" : "vegadresse",
+                "namespace" : "namespace.spark_schema.person.deltBosted",
+                "fields" : [ {
+                  "name" : "kommunenummer",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "bruksenhetsnummer",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "bruksenhetstype",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "adressenavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "adressenummer",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "adressenummer",
+                    "namespace" : "namespace.spark_schema.person.deltBosted.vegadresse",
+                    "fields" : [ {
+                      "name" : "husnummer",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "husbokstav",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "adressekode",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "adressetilleggsnavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "poststed",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "poststed",
+                    "namespace" : "namespace.spark_schema.person.deltBosted.vegadresse",
+                    "fields" : [ {
+                      "name" : "poststedsnavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "postnummer",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "coAdressenavn",
+                  "type" : [ "string", "null" ]
+                } ]
+              }, "null" ]
+            }, {
+              "name" : "matrikkeladresse",
+              "type" : [ {
+                "type" : "record",
+                "name" : "matrikkeladresse",
+                "namespace" : "namespace.spark_schema.person.deltBosted",
+                "fields" : [ {
+                  "name" : "bruksenhetsnummer",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "bruksenhetstype",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "matrikkelnummer",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "matrikkelnummer",
+                    "namespace" : "namespace.spark_schema.person.deltBosted.matrikkeladresse",
+                    "fields" : [ {
+                      "name" : "kommunenummer",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gaardsnummer",
+                      "type" : [ "long", "null" ]
+                    }, {
+                      "name" : "bruksnummer",
+                      "type" : [ "long", "null" ]
+                    }, {
+                      "name" : "festenummer",
+                      "type" : [ "long", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "undernummer",
+                  "type" : [ "long", "null" ]
+                }, {
+                  "name" : "adressetilleggsnavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "poststed",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "poststed",
+                    "namespace" : "namespace.spark_schema.person.deltBosted.matrikkeladresse",
+                    "fields" : [ {
+                      "name" : "poststedsnavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "postnummer",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "coAdressenavn",
+                  "type" : [ "string", "null" ]
+                } ]
+              }, "null" ]
+            }, {
+              "name" : "ukjentBosted",
+              "type" : [ {
+                "type" : "record",
+                "name" : "ukjentBosted",
+                "namespace" : "namespace.spark_schema.person.deltBosted",
+                "fields" : [ {
+                  "name" : "bostedskommune",
+                  "type" : [ "string", "null" ]
+                } ]
+              }, "null" ]
+            }, {
+              "name" : "startdatoForKontrakt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "sluttdatoForKontrakt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "adresseIdentifikatorFraMatrikkelen",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "naerAdresseIdentifikatorFraMatrikkelen",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "adressegradering",
+              "type" : [ "string", "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "kjoenn",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "kjoenn",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "kjoenn",
+              "type" : [ "string", "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "foedsel",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "foedsel",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "foedselsdato",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "foedselsaar",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "foedested",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "foedekommuneINorge",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "foedeland",
+              "type" : [ "string", "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "foedselINorge",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "foedselINorge",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "foedselsinstitusjonsnavn",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "rekkefoelgenummer",
+              "type" : [ "long", "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "familierelasjon",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "familierelasjon",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "relatertPerson",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "relatertPersonUtenFolkeregisteridentifikator",
+              "type" : [ {
+                "type" : "record",
+                "name" : "relatertPersonUtenFolkeregisteridentifikator",
+                "namespace" : "namespace.spark_schema.person.familierelasjon",
+                "fields" : [ {
+                  "name" : "navn",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "navn",
+                    "namespace" : "namespace.spark_schema.person.familierelasjon.relatertPersonUtenFolkeregisteridentifikator",
+                    "fields" : [ {
+                      "name" : "fornavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "mellomnavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "etternavn",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "foedselsdato",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "statsborgerskap",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "kjoenn",
+                  "type" : [ "string", "null" ]
+                } ]
+              }, "null" ]
+            }, {
+              "name" : "relatertPersonsRolle",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "minRolleForPerson",
+              "type" : [ "string", "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "sivilstand",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "sivilstand",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "sivilstand",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "sivilstandsdato",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "myndighet",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "kommune",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "sted",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "utland",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "relatertVedSivilstand",
+              "type" : [ "string", "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "doedsfall",
+        "type" : [ {
+          "type" : "record",
+          "name" : "doedsfall",
+          "namespace" : "namespace.spark_schema.person",
+          "fields" : [ {
+            "name" : "ajourholdstidspunkt",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "erGjeldende",
+            "type" : [ "boolean", "null" ]
+          }, {
+            "name" : "kilde",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "aarsak",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "gyldighetstidspunkt",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "opphoerstidspunkt",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "doedsdato",
+            "type" : [ "string", "null" ]
+          } ]
+        }, "null" ]
+      }, {
+        "name" : "navn",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "navn",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "fornavn",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "mellomnavn",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "etternavn",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "forkortetNavn",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "originaltNavn",
+              "type" : [ {
+                "type" : "record",
+                "name" : "originaltNavn",
+                "namespace" : "namespace.spark_schema.person.navn",
+                "fields" : [ {
+                  "name" : "fornavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "mellomnavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "etternavn",
+                  "type" : [ "string", "null" ]
+                } ]
+              }, "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "adressebeskyttelse",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "adressebeskyttelse",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "graderingsnivaa",
+              "type" : [ "string", "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "bostedsadresse",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "bostedsadresse",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "vegadresse",
+              "type" : [ {
+                "type" : "record",
+                "name" : "vegadresse",
+                "namespace" : "namespace.spark_schema.person.bostedsadresse",
+                "fields" : [ {
+                  "name" : "kommunenummer",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "bruksenhetsnummer",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "bruksenhetstype",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "adressenavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "adressenummer",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "adressenummer",
+                    "namespace" : "namespace.spark_schema.person.bostedsadresse.vegadresse",
+                    "fields" : [ {
+                      "name" : "husnummer",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "husbokstav",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "adressekode",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "adressetilleggsnavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "poststed",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "poststed",
+                    "namespace" : "namespace.spark_schema.person.bostedsadresse.vegadresse",
+                    "fields" : [ {
+                      "name" : "poststedsnavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "postnummer",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "coAdressenavn",
+                  "type" : [ "string", "null" ]
+                } ]
+              }, "null" ]
+            }, {
+              "name" : "matrikkeladresse",
+              "type" : [ {
+                "type" : "record",
+                "name" : "matrikkeladresse",
+                "namespace" : "namespace.spark_schema.person.bostedsadresse",
+                "fields" : [ {
+                  "name" : "bruksenhetsnummer",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "bruksenhetstype",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "matrikkelnummer",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "matrikkelnummer",
+                    "namespace" : "namespace.spark_schema.person.bostedsadresse.matrikkeladresse",
+                    "fields" : [ {
+                      "name" : "kommunenummer",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gaardsnummer",
+                      "type" : [ "long", "null" ]
+                    }, {
+                      "name" : "bruksnummer",
+                      "type" : [ "long", "null" ]
+                    }, {
+                      "name" : "festenummer",
+                      "type" : [ "long", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "undernummer",
+                  "type" : [ "long", "null" ]
+                }, {
+                  "name" : "adressetilleggsnavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "poststed",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "poststed",
+                    "namespace" : "namespace.spark_schema.person.bostedsadresse.matrikkeladresse",
+                    "fields" : [ {
+                      "name" : "poststedsnavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "postnummer",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "coAdressenavn",
+                  "type" : [ "string", "null" ]
+                } ]
+              }, "null" ]
+            }, {
+              "name" : "ukjentBosted",
+              "type" : [ {
+                "type" : "record",
+                "name" : "ukjentBosted",
+                "namespace" : "namespace.spark_schema.person.bostedsadresse",
+                "fields" : [ {
+                  "name" : "bostedskommune",
+                  "type" : [ "string", "null" ]
+                } ]
+              }, "null" ]
+            }, {
+              "name" : "adresseIdentifikatorFraMatrikkelen",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "naerAdresseIdentifikatorFraMatrikkelen",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "adressegradering",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "flyttedato",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "grunnkrets",
+              "type" : [ "long", "null" ]
+            }, {
+              "name" : "stemmekrets",
+              "type" : [ "long", "null" ]
+            }, {
+              "name" : "skolekrets",
+              "type" : [ "long", "null" ]
+            }, {
+              "name" : "kirkekrets",
+              "type" : [ "long", "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "oppholdsadresse",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "oppholdsadresse",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "utenlandskAdresse",
+              "type" : [ {
+                "type" : "record",
+                "name" : "utenlandskAdresse",
+                "namespace" : "namespace.spark_schema.person.oppholdsadresse",
+                "fields" : [ {
+                  "name" : "coAdressenavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "adressenavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "bygning",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "etasjenummer",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "boenhet",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "postboks",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "postkode",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "byEllerStedsnavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "distriktsnavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "region",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "landkode",
+                  "type" : [ "string", "null" ]
+                } ]
+              }, "null" ]
+            }, {
+              "name" : "adressenErUkjent",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "vegadresse",
+              "type" : [ {
+                "type" : "record",
+                "name" : "vegadresse",
+                "namespace" : "namespace.spark_schema.person.oppholdsadresse",
+                "fields" : [ {
+                  "name" : "kommunenummer",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "bruksenhetsnummer",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "bruksenhetstype",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "adressenavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "adressenummer",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "adressenummer",
+                    "namespace" : "namespace.spark_schema.person.oppholdsadresse.vegadresse",
+                    "fields" : [ {
+                      "name" : "husnummer",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "husbokstav",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "adressekode",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "adressetilleggsnavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "poststed",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "poststed",
+                    "namespace" : "namespace.spark_schema.person.oppholdsadresse.vegadresse",
+                    "fields" : [ {
+                      "name" : "poststedsnavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "postnummer",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "coAdressenavn",
+                  "type" : [ "string", "null" ]
+                } ]
+              }, "null" ]
+            }, {
+              "name" : "matrikkeladresse",
+              "type" : [ {
+                "type" : "record",
+                "name" : "matrikkeladresse",
+                "namespace" : "namespace.spark_schema.person.oppholdsadresse",
+                "fields" : [ {
+                  "name" : "bruksenhetsnummer",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "bruksenhetstype",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "matrikkelnummer",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "matrikkelnummer",
+                    "namespace" : "namespace.spark_schema.person.oppholdsadresse.matrikkeladresse",
+                    "fields" : [ {
+                      "name" : "kommunenummer",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "gaardsnummer",
+                      "type" : [ "long", "null" ]
+                    }, {
+                      "name" : "bruksnummer",
+                      "type" : [ "long", "null" ]
+                    }, {
+                      "name" : "festenummer",
+                      "type" : [ "long", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "undernummer",
+                  "type" : [ "long", "null" ]
+                }, {
+                  "name" : "adressetilleggsnavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "poststed",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "poststed",
+                    "namespace" : "namespace.spark_schema.person.oppholdsadresse.matrikkeladresse",
+                    "fields" : [ {
+                      "name" : "poststedsnavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "postnummer",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "coAdressenavn",
+                  "type" : [ "string", "null" ]
+                } ]
+              }, "null" ]
+            }, {
+              "name" : "adresseIdentifikatorFraMatrikkelen",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "adressegradering",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "oppholdsadressedato",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "oppholdAnnetSted",
+              "type" : [ "string", "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "innflytting",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "innflytting",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "fraflyttingsland",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "fraflyttingsstedIUtlandet",
+              "type" : [ "string", "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "utflytting",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "utflytting",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "tilflyttingsland",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "tilflyttingsstedIUtlandet",
+              "type" : [ "string", "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "brukAvSamiskSpraak",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "brukAvSamiskSpraak",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "spraak",
+              "type" : [ {
+                "type" : "array",
+                "items" : [ "string", "null" ]
+              }, "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "forholdTilSametingetsValgmanntall",
+        "type" : [ {
+          "type" : "record",
+          "name" : "forholdTilSametingetsValgmanntall",
+          "namespace" : "namespace.spark_schema.person",
+          "fields" : [ {
+            "name" : "ajourholdstidspunkt",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "erGjeldende",
+            "type" : [ "boolean", "null" ]
+          }, {
+            "name" : "kilde",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "aarsak",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "gyldighetstidspunkt",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "opphoerstidspunkt",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "forhold",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "vedtaksdato",
+            "type" : [ "string", "null" ]
+          } ]
+        }, "null" ]
+      }, {
+        "name" : "preferertKontaktadresse",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "preferertKontaktadresse",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "valg",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "adressegradering",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "kontaktadresseIFrittFormat",
+              "type" : [ {
+                "type" : "record",
+                "name" : "kontaktadresseIFrittFormat",
+                "namespace" : "namespace.spark_schema.person.preferertKontaktadresse",
+                "fields" : [ {
+                  "name" : "adresselinje",
+                  "type" : [ {
+                    "type" : "array",
+                    "items" : [ "string", "null" ]
+                  }, "null" ]
+                }, {
+                  "name" : "landkode",
+                  "type" : [ "string", "null" ]
+                } ]
+              }, "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "postadresse",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "postadresse",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "adressegradering",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "postboksadresse",
+              "type" : [ {
+                "type" : "record",
+                "name" : "postboksadresse",
+                "namespace" : "namespace.spark_schema.person.postadresse",
+                "fields" : [ {
+                  "name" : "postbokseier",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "postboks",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "poststed",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "poststed",
+                    "namespace" : "namespace.spark_schema.person.postadresse.postboksadresse",
+                    "fields" : [ {
+                      "name" : "poststedsnavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "postnummer",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                } ]
+              }, "null" ]
+            }, {
+              "name" : "vegadresse",
+              "type" : [ {
+                "type" : "record",
+                "name" : "vegadresse",
+                "namespace" : "namespace.spark_schema.person.postadresse",
+                "fields" : [ {
+                  "name" : "coAdressenavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "adressenavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "adressenummer",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "adressenummer",
+                    "namespace" : "namespace.spark_schema.person.postadresse.vegadresse",
+                    "fields" : [ {
+                      "name" : "husnummer",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "husbokstav",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "poststed",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "poststed",
+                    "namespace" : "namespace.spark_schema.person.postadresse.vegadresse",
+                    "fields" : [ {
+                      "name" : "poststedsnavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "postnummer",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "adressekode",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "adressetilleggsnavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "bruksenhetsnummer",
+                  "type" : [ "string", "null" ]
+                } ]
+              }, "null" ]
+            }, {
+              "name" : "postadresseIFrittFormat",
+              "type" : [ {
+                "type" : "record",
+                "name" : "postadresseIFrittFormat",
+                "namespace" : "namespace.spark_schema.person.postadresse",
+                "fields" : [ {
+                  "name" : "adresselinje",
+                  "type" : [ {
+                    "type" : "array",
+                    "items" : [ "string", "null" ]
+                  }, "null" ]
+                }, {
+                  "name" : "poststed",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "poststed",
+                    "namespace" : "namespace.spark_schema.person.postadresse.postadresseIFrittFormat",
+                    "fields" : [ {
+                      "name" : "poststedsnavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "postnummer",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                } ]
+              }, "null" ]
+            }, {
+              "name" : "adresseIdentifikatorFraMatrikkelen",
+              "type" : [ "string", "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "postadresseIUtlandet",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "postadresseIUtlandet",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "adressegradering",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "utenlandskAdresse",
+              "type" : [ {
+                "type" : "record",
+                "name" : "utenlandskAdresse",
+                "namespace" : "namespace.spark_schema.person.postadresseIUtlandet",
+                "fields" : [ {
+                  "name" : "coAdressenavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "adressenavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "bygning",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "etasjenummer",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "boenhet",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "postboks",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "postkode",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "byEllerStedsnavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "distriktsnavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "region",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "landkode",
+                  "type" : [ "string", "null" ]
+                } ]
+              }, "null" ]
+            }, {
+              "name" : "utenlandskAdresseIFrittFormat",
+              "type" : [ {
+                "type" : "record",
+                "name" : "utenlandskAdresseIFrittFormat",
+                "namespace" : "namespace.spark_schema.person.postadresseIUtlandet",
+                "fields" : [ {
+                  "name" : "adresselinje",
+                  "type" : [ {
+                    "type" : "array",
+                    "items" : [ "string", "null" ]
+                  }, "null" ]
+                }, {
+                  "name" : "postkode",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "byEllerStedsnavn",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "landkode",
+                  "type" : [ "string", "null" ]
+                } ]
+              }, "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "foreldreansvar",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "foreldreansvar",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "ansvar",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "ansvarssubjekt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "ansvarlig",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "ansvarligOrganisasjon",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "ansvarligUtenIdentifikator",
+              "type" : [ {
+                "type" : "record",
+                "name" : "ansvarligUtenIdentifikator",
+                "namespace" : "namespace.spark_schema.person.foreldreansvar",
+                "fields" : [ {
+                  "name" : "navn",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "navn",
+                    "namespace" : "namespace.spark_schema.person.foreldreansvar.ansvarligUtenIdentifikator",
+                    "fields" : [ {
+                      "name" : "fornavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "mellomnavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "etternavn",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "foedselsdato",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "statsborgerskap",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "kjoenn",
+                  "type" : [ "string", "null" ]
+                } ]
+              }, "null" ]
+            }, {
+              "name" : "ansvarssubjektUtenIdentifikator",
+              "type" : [ {
+                "type" : "record",
+                "name" : "ansvarssubjektUtenIdentifikator",
+                "namespace" : "namespace.spark_schema.person.foreldreansvar",
+                "fields" : [ {
+                  "name" : "navn",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "navn",
+                    "namespace" : "namespace.spark_schema.person.foreldreansvar.ansvarssubjektUtenIdentifikator",
+                    "fields" : [ {
+                      "name" : "fornavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "mellomnavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "etternavn",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "foedselsdato",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "statsborgerskap",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "kjoenn",
+                  "type" : [ "string", "null" ]
+                } ]
+              }, "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "statsborgerskap",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "statsborgerskap",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "statsborgerskap",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "ervervsdato",
+              "type" : [ "string", "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "bibehold",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "bibehold",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "bibeholdstatus",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "datoForBibehold",
+              "type" : [ "string", "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "opphold",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "opphold",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "oppholdstillatelse",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "oppholdFra",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "oppholdTil",
+              "type" : [ "string", "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      }, {
+        "name" : "vergemaalEllerFremtidsfullmakt",
+        "type" : [ {
+          "type" : "array",
+          "items" : [ {
+            "type" : "record",
+            "name" : "vergemaalEllerFremtidsfullmakt",
+            "namespace" : "namespace.spark_schema.person",
+            "fields" : [ {
+              "name" : "ajourholdstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "erGjeldende",
+              "type" : [ "boolean", "null" ]
+            }, {
+              "name" : "kilde",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "aarsak",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "gyldighetstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "opphoerstidspunkt",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "vergemaaltype",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "embete",
+              "type" : [ "string", "null" ]
+            }, {
+              "name" : "verge",
+              "type" : [ {
+                "type" : "record",
+                "name" : "verge",
+                "namespace" : "namespace.spark_schema.person.vergemaalEllerFremtidsfullmakt",
+                "fields" : [ {
+                  "name" : "navn",
+                  "type" : [ {
+                    "type" : "record",
+                    "name" : "navn",
+                    "namespace" : "namespace.spark_schema.person.vergemaalEllerFremtidsfullmakt.verge",
+                    "fields" : [ {
+                      "name" : "fornavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "mellomnavn",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "etternavn",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }, "null" ]
+                }, {
+                  "name" : "foedselsEllerDNummer",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "omfang",
+                  "type" : [ "string", "null" ]
+                }, {
+                  "name" : "omfangetErInnenPersonligOmraade",
+                  "type" : [ "boolean", "null" ]
+                } ]
+              }, "null" ]
+            } ]
+          }, "null" ]
+        }, "null" ]
+      } ]
+    }, "null" ]
+  } ]
+}
