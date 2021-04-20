@@ -1,0 +1,12 @@
+{
+  "type" : "record",
+  "name" : "spark_schema",
+  "namespace" : "no.ssb.dataset",
+  "fields" : [ {
+    "name" : "fnr",
+    "type" : "string"
+  }, {
+    "name" : "count",
+    "type" : "long"
+  } ]
+}
