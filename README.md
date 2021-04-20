@@ -9,9 +9,9 @@ This is a utility for generating a parquet files with test data, based off of a 
 
 no.ssb.transform.FregFieldInterceptor naeringsopplysninger_v1.avsc 50 1 64 naering_v1 0 delete-existing-output=true
 
-## Run the main method in `no.ssb.transform.SkattTransformXmlToParquet`:
+## Run the main method in `no.ssb.transform.TransformXmlToParquet`:
 ```
-no.ssb.transform.SkattTransformXmlToParquet.<field-interceptor> <avro-schema> <batch-size> <num-of-batches> <row-group-size> <output-folder> <start-batch> delete-existing-output=<true|false>
+no.ssb.transform.TransformXmlToParquet.<field-interceptor> <avro-schema> <batch-size> <num-of-batches> <row-group-size> <output-folder> <start-batch> delete-existing-output=<true|false>
 ```
 e.g:
 ```

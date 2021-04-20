@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 
-public class SkattTransformXmlToParquet {
+public class TransformXmlToParquet {
 
     private static final String OUTUT_FOLDER = "output";
 
