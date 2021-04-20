@@ -14,7 +14,7 @@ public class TransformXmlToParquet {
 
     // A simple command line app to generate a parquet from random data
     public static void main(String[] args) {
-        if (args.length < 4) {
+        if (args.length < 6) {
             System.out.println("Usage: java -jar skatt-synthetic-data-to-parquet.jar <interceptor> <schema.avsc> <batchsize> <numbatches> <outfolder> [delete-existing-output=true] \n");
             return;
         }
@@ -27,8 +27,7 @@ public class TransformXmlToParquet {
         String outFolder = args[5];
         int startBatch = Integer.parseInt(args[6]);
 
-        if (args.length > 6 && args[6].equals("delete-existing-output=true")) {
-            System.out.println("Deleting previous files");
+        if (args.length > 7 && args[7].equals("delete-existing-output=true")) {
             deleteOldFiles(outFolder);
         }
         FieldInterceptor fieldInterceptor;
