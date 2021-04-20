@@ -60,6 +60,9 @@ public class FregFieldInterceptor extends FieldInterceptor {
             case "kirkekrets":
                 return createRandom(999);
 
+            case "ajourholdstidspunkt":
+            case "gyldighetstidspunkt":
+            case "opphoerstidspunkt":
             case "startdatoForKontrakt":
             case "sluttdatoForKontrakt":
             case "foedselsdato":
